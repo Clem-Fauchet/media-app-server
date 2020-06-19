@@ -1,6 +1,6 @@
 //Piece of middleware to stop if something happens
 
-const admin = require('./admin')
+const { admin, db } = require('./admin')
 
 module.exports = (req, res, next) => {
 	let tokenId
@@ -19,7 +19,6 @@ module.exports = (req, res, next) => {
 		.verifyIdToken(tokenId)
 		.then((decodedToken) => {
 			req.user = decodedToken
-			console.log(decodedToken)
 			return db
 				.collection('users')
 				.where('userId', '==', req.user.uid)
