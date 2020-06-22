@@ -9,6 +9,9 @@ const {
 	postOnePost,
 	getPost,
 	commentOnPost,
+	likePost,
+	unlikePost,
+	deletePost,
 } = require('./handlers/posts')
 const {
 	signUp,
@@ -24,9 +27,9 @@ app.get('/posts', getAllPosts)
 app.post('/post', FBAuth, postOnePost)
 app.get('/post/:postId', getPost) //root parameter so we can access its value
 app.post('/post/:postId/comment', FBAuth, commentOnPost)
-//TODO; delete post
-//TODO: like a post
-//TODO: unlike a post
+app.get('/post/:postId/like', FBAuth, likePost)
+app.get('/post/:postId/unlike', FBAuth, unlikePost)
+app.delete('/post/:postId', FBAuth, deletePost)
 
 //Users routes
 app.post('/signup', signUp)
