@@ -21,6 +21,15 @@ let db = {
 			commentCount: 2,
 		},
 	],
+
+	comments: [
+		{
+			userHandle: 'user',
+			postId: 'dfsggshththde',
+			body: 'nice one mate!',
+			createdAt: '2020-06-18T13:36:27.696Z',
+		},
+	],
 }
 
 const userDetails = {
