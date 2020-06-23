@@ -30,6 +30,17 @@ let db = {
 			createdAt: '2020-06-18T13:36:27.696Z',
 		},
 	],
+
+	notifications: [
+		{
+			recipient: 'user',
+			sender: 'john',
+			read: 'true | false',
+			postId: 'dfsggshththde',
+			type: 'like | comment',
+			createdAt: '2020-06-18T13:36:27.696Z',
+		},
+	],
 }
 
 const userDetails = {
