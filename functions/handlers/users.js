@@ -25,7 +25,7 @@ exports.signUp = (req, res) => {
 
 	if (!valid) return res.status(400).json(errors)
 
-	const noImg = 'no-img.png'
+	const noImg = 'pointyhat.png'
 
 	//Validate data
 	let token, userId
