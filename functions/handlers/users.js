@@ -72,6 +72,7 @@ exports.signUp = (req, res) => {
 					.json({ general: 'Something went wrong please try again' })
 			}
 		})
+	return null
 }
 
 //Log user in
@@ -103,6 +104,7 @@ exports.login = (req, res) => {
 				.status(403)
 				.json({ general: 'Wrong credentials, please try again' })
 		})
+	return null
 }
 
 //Add user details
