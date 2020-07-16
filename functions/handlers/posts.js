@@ -65,6 +65,7 @@ exports.postOnePost = (req, res) => {
 				})
 			console.error(err)
 		})
+	return null
 }
 
 //Fetch one post
@@ -138,6 +139,7 @@ exports.commentOnPost = (req, res) => {
 				error: 'Something went wrong',
 			})
 		})
+	return null
 }
 
 //Like Post
@@ -179,6 +181,17 @@ exports.likePost = (req, res) => {
 						})
 					})
 					.then(() => {
+						return db
+							.collection('comments')
+							.orderBy('createdAt', 'desc')
+							.where('postId', '==', req.params.postId)
+							.get()
+					})
+					.then((data) => {
+						postData.comments = []
+						data.forEach((doc) => {
+							postData.comments.push(doc.data())
+						})
 						return res.json(postData)
 					})
 					.catch((err) => {
@@ -211,6 +224,10 @@ exports.unlikePost = (req, res) => {
 
 	let postData = {}
 
+	const comments = db
+		.collection('comments')
+		.where('postId', '==', req.params.postId)
+
 	postDocument
 		.get()
 		.then((doc) => {
@@ -240,6 +257,17 @@ exports.unlikePost = (req, res) => {
 						})
 					})
 					.then(() => {
+						return db
+							.collection('comments')
+							.orderBy('createdAt', 'desc')
+							.where('postId', '==', req.params.postId)
+							.get()
+					})
+					.then((data) => {
+						postData.comments = []
+						data.forEach((doc) => {
+							postData.comments.push(doc.data())
+						})
 						return res.json(postData)
 					})
 			}
