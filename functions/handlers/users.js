@@ -198,6 +198,7 @@ exports.getAuthenticatedUser = (req, res) => {
 					postId: doc.data().postId,
 					read: doc.data().read,
 					notificationId: doc.id,
+					type: doc.data().type,
 				})
 			})
 			return res.json(userData)
